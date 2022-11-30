@@ -2,11 +2,27 @@ import React, { useState } from "react";
 
 const FormTodo = props => {
     const [description, setDescription] = useState("");
+    const {addItem} = props;
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log(description)
+        
+        addItem({
+            done: false,
+            id: (new Date()).toString(),
+            description 
+        });
+
+        setDescription("");
+    };
+
     
+
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className="todo-list">
-                <div className="input">
+                <div className="file-input">
                     <input 
                         type="text"    
                         className="text"
@@ -14,15 +30,15 @@ const FormTodo = props => {
                         onChange={e => setDescription(e.target.value)}
                     />
                     <button
-                        className="button-blue"
-                        disabled={description ? "": "disabled"}
+                        className="button pink"
+                        disabled={description ? "" : "disabled"}
                     >
                         Agregar tarea
                     </button>
                 </div>
             </div>
         </form>
-    )
-};
+    );
+}
 
 export default FormTodo;
