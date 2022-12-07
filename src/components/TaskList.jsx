@@ -3,6 +3,7 @@ import Checkbox from "./Checkbox";
 
 const TaskList = props => {
     const {list, setList} = props;
+    
     const onChangeStatus = e => {
         const {name, checked} = e.target;
         const updateList = list.map(item => ({
